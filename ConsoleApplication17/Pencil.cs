@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication17
 {
-    class Pencil
+  public class Pencil
     {
         public int Id { get; set; }
 

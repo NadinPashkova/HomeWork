@@ -22,8 +22,15 @@ namespace ConsoleApplication17
             };
 
             pencilsRepository.Add(pencil);
-            pencilsRepository.Print(pencil);
-            Console.ReadKey();
+			pencilsRepository.Add(pencil);
+			pencilsRepository.Add(pencil);
+
+			pencilsRepository.WriteToFile();
+
+			var pencilNew = pencilsRepository.ReadFromFile();
+
+
+			Console.ReadKey();
         }
     }
 }

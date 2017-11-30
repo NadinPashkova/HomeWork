@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ConsoleApplication17
 {
     abstract class BasePencilRepository: IPencilsRepository
@@ -61,7 +62,8 @@ namespace ConsoleApplication17
 
 			var newArr = new Pencil[_pencils.Length - 1];
 
-
 		}
+
+	
 	}
 }
