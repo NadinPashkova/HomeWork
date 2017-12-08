@@ -1,0 +1,72 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication3
+{
+	class DictionaryGeneric<T, U> : IEnumerable<T>
+	{
+		private KeyValuePair<T, U>[] _dictionary;
+
+		private int _index = -1;
+
+		public DictionaryGeneric()
+		{
+			
+			
+		}
+
+		public IEnumerator<T> GetEnumerator()
+		{
+			return new MyGenericListEnumerator();
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return new MyGenericListEnumerator();
+		}
+
+		private class MyGenericListEnumerator : IEnumerator<T>
+		{
+			private KeyValuePair<T, U>[] _dictionary;
+
+			private int _index = -1;
+
+			public T Current
+			{
+				get
+				{
+					return _dictionary[_index].Key;
+				}
+			}
+
+			object IEnumerator.Current
+			{
+				get
+				{
+					return _dictionary[_index];
+				}
+			}
+
+			public void Dispose()
+			{
+				_dictionary = new KeyValuePair<T, U>[] { };
+			}
+
+			public bool MoveNext()
+			{
+				_index++;
+
+				return _index < _dictionary.Length;
+			}
+
+			public void Reset()
+			{
+				_index = -1;
+			}
+		}
+	}
+}
