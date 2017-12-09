@@ -7,39 +7,42 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication3
 {
-	class DictionaryGeneric<T, U> : IEnumerable<T>
+	class DictionaryGeneric<T,U> : IEnumerable<KeyValuePair<T,U>>
 	{
 		private KeyValuePair<T, U>[] _dictionary;
 
-		private int _index = -1;
 
-		public DictionaryGeneric()
+		public DictionaryGeneric(KeyValuePair<T, U> [] dictionary)
 		{
-			
-			
+			_dictionary = dictionary;
 		}
 
-		public IEnumerator<T> GetEnumerator()
+		public IEnumerator<KeyValuePair<T, U>> GetEnumerator()
 		{
-			return new MyGenericListEnumerator();
+			return new MyGenericListEnumerator(_dictionary);
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			return new MyGenericListEnumerator();
+			return new MyGenericListEnumerator(_dictionary);
 		}
 
-		private class MyGenericListEnumerator : IEnumerator<T>
+		private class MyGenericListEnumerator : IEnumerator<KeyValuePair<T, U>>
 		{
 			private KeyValuePair<T, U>[] _dictionary;
 
 			private int _index = -1;
 
-			public T Current
+			public MyGenericListEnumerator(KeyValuePair<T, U>[] dictionary)
+			{
+				_dictionary = dictionary;
+			}
+
+			public KeyValuePair<T, U> Current
 			{
 				get
 				{
-					return _dictionary[_index].Key;
+					return _dictionary[_index];
 				}
 			}
 

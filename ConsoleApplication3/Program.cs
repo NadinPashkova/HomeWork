@@ -9,23 +9,29 @@ namespace ConsoleApplication3
 {
     class Program
     {
-        static void Test()
-        {
-            Console.WriteLine("FOUND!");
-        }
-
         static void Main(string[] args)
         {
 
 
-			DictionaryGeneric<string, int> Test = new DictionaryGeneric<string, int>();
-			
-		};
+			DictionaryGeneric<string, int> dictionaryList = new DictionaryGeneric<string, int>(new []
+			{
+				new KeyValuePair<string, int> ( "first", 1 ),
+				new KeyValuePair<string, int> ( "second", 1 ),
+				new KeyValuePair<string, int> ( "serd", 1 ),
+			}
+			 );
 
-
-
-
+			foreach (var pair in dictionaryList)
+			{
+				Console.WriteLine(pair.Key);
+			}
 
 		}
+
+
+
+
+
+		
     }
 }
